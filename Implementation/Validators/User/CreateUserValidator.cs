@@ -1,0 +1,47 @@
+﻿using Application.DataTransfer;
+using EFDataAccess;
+using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Implementation.Validators.User
+{
+    public class CreateUserValidator : AbstractValidator<InsertUserDto>
+    {
+        private readonly BlogContext _context;
+
+        public CreateUserValidator(BlogContext context)
+        {
+            _context = context;
+
+            RuleFor(x => x.FirstName).NotEmpty();
+            RuleFor(x => x.LastName).NotEmpty();
+            RuleFor(x => x.Username).NotEmpty()
+                                    .Must(x => !context.Users.Any(user => user.Username == x))
+                                    .WithMessage("Username is already taken.");
+            RuleFor(x => x.Password).NotEmpty().MinimumLength(3);
+            RuleFor(x => x.Email).NotEmpty()
+                                .Must(x => !context.Users.Any(user => user.Email == x))
+                                .WithMessage("Email is already taken")
+                                .EmailAddress();
+
+
+            RuleFor(x => x.UserUseCases).Must(c => c.Select(v => v.IdUseCase).Distinct().Count() == c.Count())
+                .WithMessage("Duplicate UseCaseIds are not allowed.");
+            RuleFor(x => x.UserUseCases.Count()).GreaterThan(0).WithMessage("User must contain more than 0 UseCases");
+            RuleForEach(x => x.UserUseCases).ChildRules(n =>
+            {
+                n.RuleFor(x => x.IdUseCase).Must(UseCaseExist).WithMessage("{PropertyValue} usecase doesn't exist");
+
+            });
+        }
+
+        private bool UseCaseExist(int id)
+        {
+            return Enum.IsDefined(typeof(UseCaseEnum), id);
+        }
+
+    }
+}

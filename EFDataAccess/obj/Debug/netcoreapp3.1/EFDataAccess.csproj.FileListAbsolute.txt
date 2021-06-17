@@ -1,0 +1,15 @@
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\bin\Debug\netcoreapp3.1\EFDataAccess.deps.json
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\bin\Debug\netcoreapp3.1\EFDataAccess.runtimeconfig.json
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\bin\Debug\netcoreapp3.1\EFDataAccess.runtimeconfig.dev.json
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\bin\Debug\netcoreapp3.1\EFDataAccess.dll
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\bin\Debug\netcoreapp3.1\EFDataAccess.pdb
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.AssemblyInfoInputs.cache
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.AssemblyInfo.cs
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.csproj.CopyComplete
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.dll
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.pdb
+C:\Users\pc\Desktop\BlogAPI\EFDataAccess\obj\Debug\netcoreapp3.1\EFDataAccess.genruntimeconfig.cache

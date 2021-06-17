@@ -1,0 +1,50 @@
+﻿using Application.DataTransfer;
+using Application.Exceptions;
+using Application.Queries.User;
+using EFDataAccess;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Implementation.Queries.User
+{
+    public class EFGetUserQuery : IGetUserQuery
+    {
+        private readonly BlogContext _context;
+
+        public EFGetUserQuery(BlogContext context)
+        {
+            _context = context;
+        }
+
+        public int Id => (int)UseCaseEnum.EFGetOneUserQuery;
+
+        public string Name => UseCaseEnum.EFGetOneUserQuery.ToString();
+
+        public SingleUserDto Execute(int search)
+        {
+            var user = _context.Users.Include(x => x.UserUseCases).FirstOrDefault(x => x.Id == search);
+
+            if (user == null)
+            {
+                throw new EntityNotFoundException(search, typeof(Domain.User));
+            }
+
+            return new SingleUserDto
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Username = user.Username,
+                Email = user.Email,
+                Password = user.Password,
+                UserUseCases = user.UserUseCases.Select(x => new UserUseCaseDto
+                {
+                    IdUseCase = x.UseCaseId
+                })
+            };
+        }
+    }
+}
